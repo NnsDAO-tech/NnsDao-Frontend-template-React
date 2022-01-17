@@ -1,0 +1,8 @@
+node_modules
+.DS_Store
+dist/
+debug/
+log/
+dist-ssr
+*.local
+.dfx

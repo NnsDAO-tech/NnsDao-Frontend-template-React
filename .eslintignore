@@ -1,0 +1,7 @@
+node_modules/
+debug/
+log/
+*.zip
+buil/
+dist/
+.*/
