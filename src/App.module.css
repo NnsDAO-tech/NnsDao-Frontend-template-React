@@ -1,9 +1,14 @@
 .App {
   /*  */
+  text-align: center;
+  flex: 1;
+  margin-top: 20px;
+  vertical-align: middle;
+  line-height: 100px;
 }
 
 .AppHeader {
-  height: 40vmin;
+  height: 100px;
   pointer-events: none;
 }
 
@@ -19,7 +24,7 @@
 
 .AppHeader {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;

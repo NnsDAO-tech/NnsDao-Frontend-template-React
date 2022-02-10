@@ -2,16 +2,13 @@ import reactRefresh from '@vitejs/plugin-react-refresh';
 import fs from 'fs';
 import path from 'path';
 import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 import dfxJson from './dfx.json';
 
 const isDev = process.env['DFX_NETWORK'] !== 'ic';
 
-let canisterIds;
-try {
-  canisterIds = JSON.parse(fs.readFileSync(isDev ? '.dfx/local/canister_ids.json' : './canister_ids.json').toString());
-} catch (e) {
-  //
-}
+// @ts-ignore
+const canisterIds = JSON.parse(fs.readFileSync(isDev ? '.dfx/local/canister_ids.json' : './canister_ids.json'));
 
 // List of all aliases for canisters
 // This will allow us to: import { canisterName } from "canisters/canisterName"
@@ -22,7 +19,7 @@ const aliases = Object.entries(dfxJson.canisters).reduce((acc, [name, _value]) =
 
   return {
     ...acc,
-    ['canisters/' + name]: path.join(outputRoot, 'index.js'),
+    ['canisters/' + name]: path.join(outputRoot, 'index' + '.js'),
   };
 }, {});
 
@@ -31,7 +28,7 @@ const aliases = Object.entries(dfxJson.canisters).reduce((acc, [name, _value]) =
 const canisterDefinitions = Object.entries(canisterIds).reduce(
   (acc, [key, val]) => ({
     ...acc,
-
+    // @ts-ignore
     [`process.env.${key.toUpperCase()}_CANISTER_ID`]: isDev ? JSON.stringify(val.local) : JSON.stringify(val.ic),
   }),
   {}
@@ -43,41 +40,25 @@ const DFX_PORT = dfxJson.networks.local.bind.split(':')[1];
 // See guide on how to configure Vite at:
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [reactRefresh()],
+  plugins: [reactRefresh(), tsconfigPaths()],
   resolve: {
     alias: {
       // Here we tell Vite the "fake" modules that we want to define
-      '@': path.resolve(__dirname, './src/'),
-      '@common': path.resolve(__dirname, './src/common'),
-      '@idlFactory': path.resolve(__dirname, './src/idlFactory'),
       ...aliases,
+      '@': path.resolve(__dirname, 'src'),
     },
-  },
-  build: {
-    chunkSizeWarningLimit: 1600,
   },
   server: {
     fs: {
-      strict: false,
+      allow: ['.'],
     },
     proxy: {
       // This proxies all http requests made to /api to our running dfx instance
-      // '/api': {
-      //   target: `http://localhost:${DFX_PORT}`,
-      //   changeOrigin: true,
-      //   rewrite: path => path.replace(/^\/api/, '/api'),
-      // },
-      '/api/v2': {
-        target: 'https://ic0.app',
+      '/api': {
+        target: `http://localhost:${DFX_PORT}`,
         changeOrigin: true,
-        rewrite: path => path.replace(/^api\//, '/api/v2/canister'),
+        rewrite: path => path.replace(/^\/api/, '/api'),
       },
-      // '^/api': {
-      //   target: 'https://dapi.nnsdao.com/',
-      //   changeOrigin: true,
-      //   secure: false,
-      //   rewrite: path => path.replace(/^\/api/, ''),
-      // },
     },
   },
   define: {
