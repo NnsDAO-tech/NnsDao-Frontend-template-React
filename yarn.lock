@@ -505,11 +505,6 @@
   "resolved" "https://registry.npmjs.org/@types/estree/-/estree-0.0.39.tgz"
   "version" "0.0.39"
 
-"@types/history@^4.7.11":
-  "integrity" "sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA=="
-  "resolved" "https://registry.npmjs.org/@types/history/-/history-4.7.11.tgz"
-  "version" "4.7.11"
-
 "@types/json-schema@^7.0.9":
   "integrity" "sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ=="
   "resolved" "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.9.tgz"
@@ -545,23 +540,6 @@
   "resolved" "https://registry.npmjs.org/@types/react-dom/-/react-dom-17.0.11.tgz"
   "version" "17.0.11"
   dependencies:
-    "@types/react" "*"
-
-"@types/react-router-dom@^5.3.3":
-  "integrity" "sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw=="
-  "resolved" "https://registry.npmjs.org/@types/react-router-dom/-/react-router-dom-5.3.3.tgz"
-  "version" "5.3.3"
-  dependencies:
-    "@types/history" "^4.7.11"
-    "@types/react" "*"
-    "@types/react-router" "*"
-
-"@types/react-router@*":
-  "integrity" "sha512-YYknwy0D0iOwKQgz9v8nOzt2J6l4gouBmDnWqUUznltOTaon+r8US8ky8HvN0tXvc38U9m6z/t2RsVsnd1zM0g=="
-  "resolved" "https://registry.npmjs.org/@types/react-router/-/react-router-5.1.18.tgz"
-  "version" "5.1.18"
-  dependencies:
-    "@types/history" "^4.7.11"
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^17.0.33":
@@ -713,7 +691,8 @@
   "version" "7.4.1"
 
 "agent-pb@github:ic-cubes/agent-pb":
-  "resolved" "git+ssh://git@github.com/ic-cubes/agent-pb.git#5a2cd9955480015853930737b439c16673e95465"
+  "integrity" "sha512-HXgIaKcGHq1QO+hT3hnnVqgX64DqkvXGQaf/qI21BtbXAUe4FDh7jslgxXLx+QvMatGN6Tts91f/grVzWJ/AEA=="
+  "resolved" "git+ssh://git@github.com/ic-cubes/agent-pb.git"
   "version" "0.0.1"
   dependencies:
     "@dfinity/agent" "^0.9.0"
