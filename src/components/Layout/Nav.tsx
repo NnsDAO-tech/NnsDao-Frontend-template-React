@@ -4,8 +4,8 @@ import IdentifierLabelWithButtons from '../Buttons/IdentifierLabelWithButtons';
 import LoginButton from '../Buttons/LoginButton';
 
 const navigation = [
-  { name: 'About', href: '#about' },
-  { name: 'Home', href: '#home' },
+  { name: 'Demo', href: '/demo' },
+  { name: 'Home', href: '/home' },
 ];
 
 export default function Nav() {

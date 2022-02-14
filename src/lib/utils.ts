@@ -35,16 +35,6 @@ export const formatNumber = (number: any, digits?: number) => {
   }).format(n);
 };
 
-type SignDisplay = 'auto' | 'never' | 'always' | 'exceptZero';
-export const formatPercent = (number: number, digits = 2, signDisplay: SignDisplay = 'auto') => {
-  return Intl.NumberFormat('en-US', {
-    style: 'percent',
-    signDisplay,
-    minimumFractionDigits: digits,
-    maximumFractionDigits: digits,
-  }).format(number);
-};
-
 export const shortAccount = (accountId: string) => `${accountId.slice(0, 4)}...${accountId.slice(-4)}`;
 
 export const shortPrincipal = (principal: string | Principal) => {
@@ -66,6 +56,6 @@ export async function tryCall<T extends (...args: any) => any>(f: T): Promise<Re
   try {
     return await f();
   } catch (error) {
-    throw error.message;
+    throw (error as any).message;
   }
 }

@@ -4,11 +4,11 @@ import style from './Demo.module.css';
 const Demo = () => {
   return (
     <>
+      <Nav />
       <div className={style.pageHome}>page demo test</div>
       <div>
         <p>test</p>
       </div>
-      <Nav />
     </>
   );
 };

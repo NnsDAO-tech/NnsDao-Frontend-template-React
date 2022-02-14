@@ -36,7 +36,7 @@ export default function IdentifierLabelWithButtons({
   const rawId =
     typeof id === 'object' && '_isPrincipal' in id ? id.toText() : typeof id === 'bigint' ? id.toString() : id;
 
-  let shortId: string;
+  let shortId: string | undefined = undefined;
   if (type === 'Principal' || type === 'Account') {
     if (type === 'Principal') shortId = shortPrincipal(rawId);
     else if (type === 'Account') shortId = shortAccount(rawId);

@@ -4,8 +4,9 @@
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
-    "checkJs": true,
+    "checkJs": false,
     "skipLibCheck": false,
+    "strictNullChecks": false,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -27,5 +28,5 @@
     }
   },
   "include": ["./src/**/*"],
-  "exclude": ["node_modules", ".vscode/*", "dist/*"]
+  "exclude": ["node_modules", ".vscode/*", "dist/*", "src/idlFactory/*"]
 }
